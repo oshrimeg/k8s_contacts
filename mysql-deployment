@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      volumes:
+      - name: mysql-config-volume
+        configMap:
+          name: config-map-db.yaml  
+      containers:
+      - name: mysql
+        image: mysql:latest  # The MySQL Docker image
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secret-mysql  # Refers to a Secret named "secret-mysql"
+              key: db_password  # The key for the password value in the Secret
+        volumeMounts:
+        - name: mysql-config-volume
+          mountPath: /etc/mysql/my.cnf
+          subPath: my.cnf  # Mounting a specific file from the ConfigMap
+        ports:
+        - containerPort: 3306
