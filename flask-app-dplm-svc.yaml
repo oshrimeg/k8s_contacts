@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-contacts-app
-        image: shashkist/flask-contacts-app:1.4
+        image: shashkist/flask-contacts-app:latest
         ports:
         - containerPort: 5052
         env:
@@ -37,6 +37,5 @@ spec:
   ports:
     - protocol: TCP
       port: 5053
-      targetPort: 5052
-      # nodePort: 30001        
+      targetPort: 5052     
        
