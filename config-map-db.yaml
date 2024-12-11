@@ -1,6 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: flask-mysql-config
+  name: flask-mysql-config  # This name should match the reference in the Deployment
 data:
-  db_url: "mysql-service"
+  my.cnf: |
+    [client]
+    user=root
+    password=${MYSQL_ROOT_PASSWORD}
+    host=localhost
+    port=3306
+
+    [mysqld]
+    bind-address = 0.0.0.0
+    default-storage-engine = innodb
+    skip-name-resolve
+    max-connections = 200
