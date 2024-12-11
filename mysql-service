@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: mysql  # Matches the labels in the Deployment
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306  # Routes traffic from the service to port 3306 on the pod
