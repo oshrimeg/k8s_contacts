@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: flask-mysql-config
 data:
-  db_url: "mysql-service:3306"  # Adjust according to your setup
+  db_url: "mysql-service"  # Adjust according to your setup
