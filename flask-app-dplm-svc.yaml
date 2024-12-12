@@ -36,6 +36,6 @@ spec:
   type: LoadBalancer  
   ports:
     - protocol: TCP
-      port: 5053
+      port: 80
       targetPort: 5052     
        
