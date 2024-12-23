@@ -25,3 +25,10 @@ spec:
               key: db_password  # The key for the password value in the Secret
         ports:
         - containerPort: 3306
+        volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql  # MySQL's default data directory
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: db-pvc
