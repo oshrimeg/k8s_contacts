@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: mysql-storage
         persistentVolumeClaim:
-          claimName: db-pvc1
+          claimName: db-pvc
