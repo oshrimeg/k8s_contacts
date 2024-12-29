@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: mysql-storage
         persistentVolumeClaim:
-          claimName: ebs-pvc
+          claimName: efs-pvc
